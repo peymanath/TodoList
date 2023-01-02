@@ -7,7 +7,7 @@ const todoInput = select('.form-todo input'),
     todoItems = select('.todo-items');
 
 // Event
-addTodo.addEventListener('click', addTodoHandler);
+addTodo.addEventListener('click', addTodoHandler); // Adding event to todo button after click
 
 // Functions
 function addTodoHandler(e) {
@@ -19,15 +19,15 @@ function addTodoHandler(e) {
         alert("Please Write Input") // If the entry is empty, this message will be displayed.
 
     else {
-        const todoItemsDiv = d.createElement('div');
+        const todoItemsDiv = d.createElement('div'); // Creating item body
+        
+        todoItemsDiv.classList.add('list-todo'); // Adding class to item body
 
-        todoItemsDiv.innerHTML = `<li>${todoInput.value}</li><span><i class="far fa-square-check"></i></span><span><i class="fa-regular fa-trash-can"></i></span>`
+        todoItemsDiv.innerHTML = `<li>${todoInput.value}</li><span><i class="far fa-square-check"></i></span><span><i class="fa-regular fa-trash-can"></i></span>`; // adding item to item body
 
-        todoItemsDiv.classList.add('list-todo');
+        todoItems.appendChild(todoItemsDiv); // Append items to DOM
 
-        todoItems.appendChild(todoItemsDiv);
-
-        todoInput.value = "";
+        todoInput.value = ""; // Clears the input value to add a new item
     }
 
 }
