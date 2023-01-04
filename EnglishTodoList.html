@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Todo List</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" defer />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/solid.min.css" defer />
+</head>
+
+<body>
+  <header>To Do List</header>
+  
+  <a href="./PersianTodoList.html" class="button" style="flex: 1;">مشاهده تودولیست فارسی</a>
+
+  <div class="todo-body">
+
+    <div class="todo">
+
+      <form class="form-todo">
+        <input type="text" placeholder="Typing ..." name="todo">
+        <button class="add-todo"><i class="fas fa-circle-plus"></i></button>
+      </form>
+
+      <div class="filters">
+
+        <select name="" id="">
+          <option value="1">All</option>
+          <option value="2">Completed</option>
+          <option value="3">Uncompleted</option>
+        </select>
+  
+      </div>
+    </div>
+
+    <!-- Todo List Items Positions -->
+    <div class="todo-items"></div> 
+
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

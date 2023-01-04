@@ -20,7 +20,8 @@ function addTodoHandler(e) {
 
     if (!todoInput.value.trim().length) // Checks that the input is empty
 
-        alert("Please Write Input") // If the entry is empty, this message will be displayed.
+        if(select('body').classList.contains('Persian')) alert("لطفا یک ایتم بنویسید.") 
+        else alert("Please Write Input") // If the entry is empty, this message will be displayed.
 
     else {
         const todoItemsDiv = d.createElement('div'); // Creating item body
