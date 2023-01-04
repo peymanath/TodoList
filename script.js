@@ -12,7 +12,7 @@ const filters = select('.filters');
 addTodo.addEventListener('click', addTodoHandler); // Adding event to todo button after click
 todoItems.addEventListener('click', checkRemove); // Adding event to icon after click
 filters.addEventListener('click', filter); // Adding event to filters after click
-
+document.addEventListener('DOMContentLoaded', getLocalstorageTodos);
 // Functions
 function addTodoHandler(e) {
 
@@ -33,6 +33,8 @@ function addTodoHandler(e) {
         <span><i class="far remove fa-trash-can"></i></span>`; // adding item to item body
 
         todoItems.appendChild(todoItemsDiv); // Append items to DOM
+
+        setLocalstorageTodos(todoInput.value);
 
         todoInput.value = ""; // Clears the input value to add a new item
     }
@@ -60,15 +62,42 @@ function filter(e) {
     const filterValue = e.target.value;
 
     childListItems.forEach(e => {
-       
-        if (filterValue == "2")
-        e.classList.contains('completed') ? e.style.display = 'flex' : e.style.display = 'none' ;
 
-        else if (filterValue == "3")  
-        !e.classList.contains('completed')? e.style.display = 'flex' : e.style.display = 'none' ;
+        if (filterValue == "2")
+            e.classList.contains('completed') ? e.style.display = 'flex' : e.style.display = 'none';
+
+        else if (filterValue == "3")
+            !e.classList.contains('completed') ? e.style.display = 'flex' : e.style.display = 'none';
 
         else e.style.display = 'flex';
 
     });
 
+}
+
+function setLocalstorageTodos(item) {
+
+    let savedTodo = localStorage.getItem('LocalSaveToDos') ? JSON.parse(localStorage.getItem('LocalSaveToDos')) : [];
+
+    savedTodo.push(item);
+
+    localStorage.setItem('LocalSaveToDos', JSON.stringify(savedTodo));
+}
+
+function getLocalstorageTodos() {
+
+    let savedTodo = localStorage.getItem('LocalSaveToDos') ? JSON.parse(localStorage.getItem('LocalSaveToDos')) : [];
+
+    savedTodo.forEach(e => {
+        const todoItemsDiv = d.createElement('div'); // Creating item body
+
+        todoItemsDiv.classList.add('list-todo'); // Adding class to item body
+
+        todoItemsDiv.innerHTML = `
+        <li>${e}</li>
+        <span><i class="far check fa-square-check"></i></span>
+        <span><i class="far remove fa-trash-can"></i></span>`; // adding item to item body
+
+        todoItems.appendChild(todoItemsDiv); // Append items to DOM
+    })
 }
