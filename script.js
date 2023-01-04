@@ -48,6 +48,7 @@ function checkRemove(e) {
 
     if (classLis.find(e => e == "remove")) {
         Parent.remove();
+        removeLocalstorageTodos(Parent);
     };
     if (classLis.find(e => e == "check")) {
         Parent.classList.toggle("completed");
@@ -100,4 +101,15 @@ function getLocalstorageTodos() {
 
         todoItems.appendChild(todoItemsDiv); // Append items to DOM
     })
+}
+
+function removeLocalstorageTodos(removeitem) {
+
+    const textRemoved = removeitem.children[0].innerText;
+
+    let savedTodo = localStorage.getItem('LocalSaveToDos') ? JSON.parse(localStorage.getItem('LocalSaveToDos')) : [];
+
+    const filterTodo = savedTodo.filter(item => item !== textRemoved);
+
+    localStorage.setItem('LocalSaveToDos', JSON.stringify(filterTodo));
 }
